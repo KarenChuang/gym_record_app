@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'workout_list.dart';
-import 'user.dart';
+import './User/user.dart';
 import 'dashboard.dart';
 
 class Home extends StatefulWidget {

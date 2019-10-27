@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'exercise_item.dart';
+
 
 class WorkOutList extends StatefulWidget {
   WorkOutList(String s, {Key key}) : super(key: key);
@@ -16,7 +18,7 @@ class _WorkOutListState extends State<WorkOutList> {
   ];
 
   final List<String> _tabValues = [
-    '全部',
+    '高位下拉',
     '上肢',
     '下肢',
     '有氧',
@@ -42,6 +44,11 @@ class _WorkOutListState extends State<WorkOutList> {
           appBar: AppBar(
               backgroundColor: Color(0xFF313A52),
               title: Text('动作库'),
+actions: <Widget>[
+          new IconButton(icon: new Icon(Icons.playlist_add),
+              onPressed: (){},
+          ),
+        ],
               bottom: TabBar(
                 indicatorWeight: 4,
                 indicatorColor: Color(0xFFF8D20D),
@@ -50,64 +57,14 @@ class _WorkOutListState extends State<WorkOutList> {
               )),
           body: TabBarView(
             controller: _controller,
-            children: _tabValues.map((f) {
-              // return Center(
-              //   child: Text(f),
-              // );
+            children: _tabValues.map((value) {
               return Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Container(
-                    child: Expanded(
-                      child: ListView.builder(
-                        itemCount: 10,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: Color(0xFFDCE3ED),
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(18),
-                              child: Flex(
-                                direction: Axis.horizontal,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  // Text((index + 1).toString()),
-                                  Icon(Icons.fitness_center),
-                                  Column(
-                                    children: <Widget>[
-                                      Text(f),
-                                      Chip(
-                                        backgroundColor: Colors.grey.shade800,
-                                        label: Text(
-                                          '臀部',
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                  IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(Icons.add_circle),
-                                  ),
-                                  // Text('标题标题标题'),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  )
+                  ExerciseItem(value)
                 ],
               );
             }).toList(),
-
-            // Column()
           )),
     );
   }
