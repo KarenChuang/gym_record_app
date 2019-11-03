@@ -8,47 +8,49 @@ class User extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Padding(
-      padding: EdgeInsets.all(0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            padding: EdgeInsets.all(10),
+            child: Column(
+              children: <Widget>[
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Image.asset('./assets/hakase02.jpg', width: 50,),
-                    Text('冰冰冰冰清')
+                    ClipRRect(
+                      child: Image.asset('assets/hakase02.jpg', height: 80.0),
+                       borderRadius: new BorderRadius.circular(80.0),
+                    ),
                   ],
-                )),
-          ),
-          Container(
-            margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
-            width: double.infinity,
-            height: 60,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: new BorderRadius.circular(2.0),
-                color: Colors.green,
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
-            width: double.infinity,
-            height: 60,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: new BorderRadius.circular(2.0),
-                color: Colors.green,
-              ),
-            ),
-          ),
-       
-        ],
-      ),
-    ));
+                ),
+                Expanded(
+                  child: ListView(
+                      children: ListTile.divideTiles(context: context, tiles: [
+                    ListTile(
+                      title: Text('昵称'),
+                      trailing: Text('冰冰冰冰冰清'),
+                    ),
+                    ListTile(
+                      title: Text('性别'),
+                      trailing: Text('女'),
+                    ),
+                    ListTile(
+                      title: Text('年龄'),
+                      trailing: Text('18'),
+                    ),
+                    ListTile(
+                      title: Text('健身房'),
+                      trailing: Icon(Icons.keyboard_arrow_right),
+                    ),
+                    ListTile(
+                      title: Text('账户与安全'),
+                      trailing: Icon(Icons.keyboard_arrow_right),
+                    ),
+                    ListTile(
+                      title: Text('关于'),
+                      trailing: Icon(Icons.keyboard_arrow_right),
+                    ),
+                  ]).toList()),
+                )
+              ],
+            )));
   }
 }

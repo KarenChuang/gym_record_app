@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'exercise_item.dart';
 
-
-class WorkOutList extends StatefulWidget {
-  WorkOutList(String s, {Key key}) : super(key: key);
+class ExerciseList extends StatefulWidget {
+  ExerciseList(String s, {Key key}) : super(key: key);
 
   @override
-  _WorkOutListState createState() => _WorkOutListState();
+  _ExerciseListState createState() => _ExerciseListState();
 }
 
-class _WorkOutListState extends State<WorkOutList> {
+class _ExerciseListState extends State<ExerciseList> {
   final List<Tab> myTabs = <Tab>[
     Tab(text: '全部'),
     Tab(text: '上肢'),
@@ -44,11 +43,12 @@ class _WorkOutListState extends State<WorkOutList> {
           appBar: AppBar(
               backgroundColor: Color(0xFF313A52),
               title: Text('动作库'),
-actions: <Widget>[
-          new IconButton(icon: new Icon(Icons.playlist_add),
-              onPressed: (){},
-          ),
-        ],
+              actions: <Widget>[
+                new IconButton(
+                  icon: new Icon(Icons.playlist_add),
+                  onPressed: () {},
+                ),
+              ],
               bottom: TabBar(
                 indicatorWeight: 4,
                 indicatorColor: Color(0xFFF8D20D),
@@ -60,9 +60,7 @@ actions: <Widget>[
             children: _tabValues.map((value) {
               return Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  ExerciseItem(value)
-                ],
+                children: <Widget>[ExerciseItem(value)],
               );
             }).toList(),
           )),
